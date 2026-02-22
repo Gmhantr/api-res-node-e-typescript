@@ -1,0 +1,19 @@
+{
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+"eslint.validate": [
+    "javascript",
+    "typescript"
+],
+"[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+},
+"[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+}
+}
+
+

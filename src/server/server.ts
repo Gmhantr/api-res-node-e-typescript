@@ -1,14 +1,14 @@
 import express from 'express';
+import 'dotenv/config';
+
+import { router } from './routes';
 
 const server = express();
 
 
 
+server.use(express.json());
 
-server.get('/', (_, res) => {
+server.use(router);
 
-    return res.send('ola mundo');
-
-});
-
-export {server}
+export { server };

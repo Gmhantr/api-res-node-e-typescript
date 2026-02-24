@@ -1,63 +1,39 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import json from '@eslint/json';
-import markdown from '@eslint/markdown';
-import css from '@eslint/css';
-import { defineConfig } from 'eslint/config';
 
-export default defineConfig([
+export default [
 
-
+    // Base JavaScript rules
     js.configs.recommended,
 
-
+    // TypeScript recommended rules
     ...tseslint.configs.recommended,
 
-
     {
-        files: ['**/*.{js,mjs,cjs,ts,mts,cts}'],
+        files: ['**/*.{ts,js}'],
+
         languageOptions: {
             globals: globals.node,
+            parser: tseslint.parser,
+            parserOptions: {
+                sourceType: 'module',
+                ecmaVersion: 'latest',
+            },
         },
+
         rules: {
+            // Estilo
             semi: ['warn', 'always'],
             indent: ['error', 4],
             quotes: ['error', 'single'],
+
+            // TypeScript
+            '@typescript-eslint/no-empty-object-type': 'off',
+            '@typescript-eslint/no-empty-interface': 'off',
+            '@typescript-eslint/no-explicit-any': 'off',
         },
     },
+];
 
-    // JSON
-    {
-        files: ['**/*.json'],
-        plugins: { json },
-        language: 'json/json',
-        extends: ['json/recommended'],
-    },
-
-    // JSONC
-    {
-        files: ['**/*.jsonc'],
-        plugins: { json },
-        language: 'json/jsonc',
-        extends: ['json/recommended'],
-    },
-
-    // Markdown
-    {
-        files: ['**/*.md'],
-        plugins: { markdown },
-        language: 'markdown/gfm',
-        extends: ['markdown/recommended'],
-    },
-
-    // CSS
-    {
-        files: ['**/*.css'],
-        plugins: { css },
-        language: 'css/css',
-        extends: ['css/recommended'],
-    },
-
-]);
 

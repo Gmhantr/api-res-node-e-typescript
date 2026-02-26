@@ -13,11 +13,11 @@
   "author": "gmhant",
   "license": "MIT",
   "private": false,
-  "scripts": {
-    "start": "ts-node-dev ./src/index.ts",
-    "postinstall": "tsc",
-    "test": "jest",
-    "production": "node ./build/index.js" 
+"scripts": {
+  "build": "tsc",
+  "start": "node build/index.js",
+  "dev": "ts-node-dev src/index.ts",
+    "test": "jest"
   },
   "devDependencies": {
     "@eslint/css": "^0.14.1",
@@ -35,6 +35,6 @@
     "typescript-eslint": "^8.56.0"
   },
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   }
 }
